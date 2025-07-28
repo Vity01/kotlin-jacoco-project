@@ -1,0 +1,12 @@
+# Project exclude paths
+/target/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/checkstyle-idea.xml
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/GitLink.xml
+/.idea/jarRepositories.xml
+/.idea/kotlinc.xml
+/.idea/misc.xml
+/.idea/vcs.xml
