@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Constants.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Kotlin Jacoco Project</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Constants.kt</span></div><h1>Constants.kt</h1><pre class="source lang-java linenums">package com.example
+
+/**
+ * Constants class containing application-wide constants
+ */
+<span class="fc" id="L6">class Constants {</span>
+
+    // Instance properties
+<span class="fc" id="L9">    val instanceId: String = generateInstanceId()</span>
+<span class="fc" id="L10">    val createdAt: Long = System.currentTimeMillis()</span>
+
+
+<span class="nc" id="L13">    class InnerClass {</span>
+        // Inner class properties
+<span class="nc" id="L15">        val innerProperty: String = &quot;Inner Property Value&quot;</span>
+
+        // Inner class method
+        fun getInnerInfo(): String {
+<span class="nc" id="L19">            return &quot;Inner Class Info: $innerProperty&quot;</span>
+        }
+    }
+
+    // Instance methods
+    fun getInstanceInfo(): String {
+<span class="fc" id="L25">        return &quot;Instance $instanceId created at $createdAt&quot;</span>
+    }
+
+    fun isOlderThan(milliseconds: Long): Boolean {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        return (System.currentTimeMillis() - createdAt) &gt; milliseconds</span>
+    }
+
+    private fun generateInstanceId(): String {
+<span class="fc" id="L33">        return &quot;CONST_${System.nanoTime().toString(36).uppercase()}&quot;</span>
+    }
+
+    // Instance enum for configuration levels
+<span class="fc" id="L37">    enum class LogLevel(val priority: Int) {</span>
+<span class="fc" id="L38">        DEBUG(0),</span>
+<span class="fc" id="L39">        INFO(1),</span>
+<span class="fc" id="L40">        WARN(2),</span>
+<span class="fc" id="L41">        ERROR(3);</span>
+
+        fun isHigherThan(other: LogLevel): Boolean {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            return this.priority &gt; other.priority</span>
+        }
+    }
+
+    companion object {
+        // Application constants
+        const val APP_NAME = &quot;Kotlin Jacoco Project&quot;
+        const val VERSION = &quot;1.0.0&quot;
+        const val DEFAULT_TIMEOUT = 5000L
+
+        // Configuration constants
+        const val MAX_RETRY_ATTEMPTS = 3
+        const val DEFAULT_BUFFER_SIZE = 1024
+
+        // Status codes
+        const val SUCCESS_CODE = 200
+        const val ERROR_CODE = 500
+        const val NOT_FOUND_CODE = 404
+
+        // Default values
+<span class="fc" id="L64">        val DEFAULT_CONFIG = mapOf(</span>
+<span class="fc" id="L65">            &quot;debug&quot; to false,</span>
+<span class="fc" id="L66">            &quot;verbose&quot; to true,</span>
+<span class="fc" id="L67">            &quot;autoSave&quot; to true</span>
+        )
+
+        /**
+         * Returns formatted application info
+         */
+        fun getAppInfo(): String {
+<span class="fc" id="L74">            return &quot;$APP_NAME v$VERSION&quot;</span>
+        }
+
+        /**
+         * Checks if the given code is a success code
+         */
+        fun isSuccessCode(code: Int): Boolean {
+<span class="fc bfc" id="L81" title="All 4 branches covered.">            return code in 200..299</span>
+        }
+    }
+}
+
+object CreateOptionsFactory {
+    fun createCreateOption(saveOption: String) =
+<span class="nc" id="L88">        when (saveOption) {</span>
+<span class="nc bnc" id="L89" title="All 4 branches missed.">            &quot;auto&quot; -&gt; Constants.DEFAULT_CONFIG[&quot;autoSave&quot;] ?: true</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            &quot;manual&quot; -&gt; false</span>
+<span class="nc" id="L91">            else -&gt; throw IllegalArgumentException(&quot;Unknown save option: $saveOption&quot;)</span>
+<span class="nc" id="L92">        }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

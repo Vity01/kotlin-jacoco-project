@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Kotlin Jacoco Project,com.example,Constants.LogLevel,0,55,0,2,0,6,0,5,0,4
+Kotlin Jacoco Project,com.example,Template,0,15,0,0,0,3,0,3,0,3
+Kotlin Jacoco Project,com.example,ClientId,0,21,0,0,0,4,0,4,0,4
+Kotlin Jacoco Project,com.example,Constants,0,76,0,2,0,10,0,8,0,7
+Kotlin Jacoco Project,com.example,Constants.Companion,0,16,0,4,0,3,0,5,0,3
+Kotlin Jacoco Project,com.example,Table,0,27,0,0,0,5,0,5,0,5
+Kotlin Jacoco Project,com.example,Constants.InnerClass,13,0,0,0,3,0,3,0,3,0
+Kotlin Jacoco Project,com.example,AppConsent,0,15,0,0,0,3,0,3,0,3
+Kotlin Jacoco Project,com.example,DataExtensionPropertiesKt,0,30,0,0,0,1,0,1,0,1
+Kotlin Jacoco Project,com.example,DoubleOptIn,0,21,0,0,0,4,0,4,0,4
+Kotlin Jacoco Project,com.example,DataExtensionsProperties,0,21,0,0,0,4,0,4,0,4
+Kotlin Jacoco Project,com.example,CreateOptionsFactory,31,0,6,0,5,0,4,0,1,0
