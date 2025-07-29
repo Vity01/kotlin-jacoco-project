@@ -1,6 +1,6 @@
-# JaCoCo Kotlin Companion Object Inconsistency Demo
+# JaCoCo vs ReportGenerator Kotlin Line Coverage Issue Example
 
-This project demonstrates inconsistencies in the [JaCoCo](https://www.jacoco.org/jacoco/) code coverage library when working with Kotlin `Companion` objects.
+This project demonstrates line coverage percentage differences between [JaCoCo](https://www.jacoco.org/jacoco/) UI and [ReportGenerator](https://github.com/danielpalme/ReportGenerator) when working with Kotlin multiple data classes in the same file.
 
 ## Project Details
 
@@ -9,18 +9,39 @@ This project demonstrates inconsistencies in the [JaCoCo](https://www.jacoco.org
 
 ## Purpose
 
-The goal is to showcase how JaCoCo may report incorrect or unexpected code coverage results for code inside Kotlin `Companion` objects. This can help developers understand and reproduce the issue for further analysis or reporting.
+The goal is to showcase how ReportGenerator includes the same line count multiple times, leading to percentage differences when compared to JaCoCo's native HTML reports. 
 
 ## How to Use
 
-1. Clone this repository.
+1. Clone this repository
 2. Build the project using Maven:
-3. Review the generated JaCoCo coverage report in `target/site/jacoco/index.html`.
-4. Observe the coverage results for classes with `Companion` objects.
+   ```bash
+   mvn clean test jacoco:report
+   ```
+3. Review the generated JaCoCo coverage report in `target/site/jacoco/index.html`
+4. Generate a coverage report using [ReportGenerator](https://github.com/danielpalme/ReportGenerator) from the JaCoCo XML output:
+   ```bash
+   reportgenerator -reports:"target/site/jacoco/jacoco.xml" -targetdir:"target/reportgenerator" -reporttypes:Html
+   ```
+5. Observe and compare line coverage results between both reports
 
-## Example
+## The Issue
 
-The project contains sample Kotlin classes with `Companion` objects and corresponding tests. Compare the coverage results for regular class members and those inside `Companion` objects.
+ReportGenerator counts the same source lines multiple times when processing JaCoCo XML data, resulting in:
+
+- Higher total line counts in ReportGenerator reports
+- Discrepancy coverage percentage compared to JaCoCo UI
+
+
+## Comparison Example
+
+ Compare the coverage results and total line counts between JaCoCo UI and ReportGenerator to observe the duplicate counting issue.
+
+### Jacoco - the line coverage percentage is (50–8)/50 = 84% 
+![jacoco](doc/img/jacoco.png)
+
+### ReportGenerator - the line coverage percentage is 92% - same file counted multiple times
+![img.png](doc/img/reportgenerator.png)
 
 ## License
 
